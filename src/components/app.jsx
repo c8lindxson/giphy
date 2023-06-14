@@ -24,6 +24,11 @@ class App extends Component {
       rating: 'g'
     }, (error, result) => {
       // gif data
+      if (error) {
+        console.error(error);
+        return;
+      }
+
       this.setState({
         gifs: result.data
       });
