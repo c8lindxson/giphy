@@ -18,21 +18,19 @@ class App extends Component {
   }
 
   search = (query) => {
-    // API call
-    giphy('istUe8Sac5uRmEyLnjhjlK633CII8Hca').search({
-      q: query,
-      rating: 'g'
-    }, (error, result) => {
-      // gif data
-      if (error) {
-        console.error(error);
-        return;
-      }
+    const url = `https://api.giphy.com/v1/gifs/search?q=${query}&rating=g&api_key=istUe8Sac5uRmEyLnjhjlK633CII8Hca`;
 
-      this.setState({
-        gifs: result.data
+    fetch(url)
+      .then((response) => response.json())
+      .then((result) => {
+        // gif data
+        this.setState({
+          gifs: result.data
+        });
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    });
   }
 
   changeSelectGif = (newSelectedGifId) => {
