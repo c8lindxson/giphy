@@ -1,6 +1,5 @@
 # example netlify.toml
 [build]
-  base = "web"
   command = "webpack"
   functions = "netlify/functions"
   publish = "dist"
